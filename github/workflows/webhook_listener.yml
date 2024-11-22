@@ -1,1 +1,17 @@
+name: Webhook Listener
 
+on:
+  repository_dispatch:
+    types: [power_on, power_off]
+
+jobs:
+  trigger_ifttt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger IFTTT
+        run: |
+          if [ "${{ github.event.action }}" == "power_on" ]; then
+            curl -X POST https://maker.ifttt.com/trigger/power_on/with/key/YOUR_IFTTT_KEY
+          elif [ "${{ github.event.action }}" == "power_off" ]; then
+            curl -X POST https://maker.ifttt.com/trigger/power_off/with/key/YOUR_IFTTT_KEY
+          fi
