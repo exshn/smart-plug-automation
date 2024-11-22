@@ -11,7 +11,7 @@ jobs:
       - name: Trigger IFTTT
         run: |
           if [ "${{ github.event.action }}" == "power_on" ]; then
-            curl -X POST https://maker.ifttt.com/trigger/power_on/with/key/YOUR_IFTTT_KEY
+            curl -X POST https://maker.ifttt.com/trigger/power_on/json/with/key/dyza9RkuC6zAx1-BAOxoWE
           elif [ "${{ github.event.action }}" == "power_off" ]; then
-            curl -X POST https://maker.ifttt.com/trigger/power_off/with/key/YOUR_IFTTT_KEY
+            curl -X POST https://maker.ifttt.com/trigger/power_off/json/with/key/dyza9RkuC6zAx1-BAOxoWE
           fi
